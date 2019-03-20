@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        >
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:text="注册"/>
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+
+    <EditText
+        android:id="@+id/re_user_id"
+        android:layout_width="250dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:inputType="textEmailAddress"
+        android:hint="邮箱"
+        android:textColor="#000000"
+        android:maxLines="1" />
+
+    <EditText
+        android:id="@+id/re_password1"
+        android:layout_width="250dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="密码"
+        android:textColor="#000000"
+        android:maxLines="1" />
+
+    <EditText
+        android:id="@+id/re_password2"
+        android:layout_width="250dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="确认密码"
+        android:textColor="#000000"
+        android:maxLines="1" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp">
+
+        <EditText
+            android:id="@+id/validate"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:hint="验证码"
+            android:textColor="#000000"
+            android:maxLines="1" />
+
+        <Button
+            android:id="@+id/send_validate"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="发送验证码"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/complete_register"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:text="完成注册" />
+
+    </LinearLayout>
