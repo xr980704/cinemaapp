@@ -1,0 +1,45 @@
+CREATE TABLE MOVIE_HALL(
+  H_ID    INT PRIMARY KEY NOT NULL,
+  TYPE    TEXT            NOT NULL,
+  ROW     INT             NOT NULL,
+  COLUMN  INT             NOT NULL
+);
+
+CREATE TABLE MOVIE(
+  M_ID         INT PRIMARY KEY NOT NULL,
+  NAME         TEXT            NOT NULL,
+  BLURB        TEXT            NOT NULL,
+  CERTIFICATE  INT             NOT NULL,
+  DIRECTOR     TEXT            NOT NULL,
+  LEAD_ACTORS  TEXT            NOT NULL,
+  RELEASE_DATE DATE            NOT NULL,
+  DURATION     INT             NOT NULL
+);
+
+CREATE TABLE SCHEDULE(
+  S_ID       INT PRIMARY KEY NOT NULL,
+  M_ID       INT             NOT NULL,
+  H_ID       INT             NOT NULL,
+  START_TIME TIME            NOT NULL,
+  DURATION   INT             NOT NULL,
+  PRICE      REAL            NOT NULL
+);
+
+CREATE TABLE ACCOUNT(
+  A_ID     INT PRIMARY KEY NOT NULL,
+  PASSWORD TEXT            NOT NULL,
+  EMAIL    TEXT            NOT NULL,
+  NAME     TEXT            NOT NULL
+);
+
+CREATE TABLE MOVIE_ORDER(
+  O_ID           INT PRIMARY KEY NOT NULL,
+  A_ID           INT             NOT NULL,
+  S_ID           INT             NOT NULL,
+  TICKET_NUMBER  INT             NOT NULL,
+  ROW_STR        TEXT            NOT NULL,
+  COLUMN_STR     TEXT            NOT NULL,
+  ORIGINAL_PRICE REAL            NOT NULL,
+  ACTUAL_PRICE   REAL            NOT NULL,
+  STATUS         INT             NOT NULL
+);
