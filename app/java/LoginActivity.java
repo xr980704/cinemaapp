@@ -26,6 +26,9 @@ public class LoginActivity extends BaseActivity {
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
+        TextView tv = (TextView) findViewById(R.id.title);
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "wryh.ttf");
+        tv.setTypeface(typeface);
         user_id = (EditText) findViewById(R.id.user_id);
         password = (EditText) findViewById(R.id.password);
 
