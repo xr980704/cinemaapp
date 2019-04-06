@@ -13,9 +13,9 @@ import android.database.Cursor;
 
 public class LoginActivity extends BaseActivity {
     private EditText user_id;
-    String us_id;
+    private String us_id;
     private EditText password;
-    String passwd;
+    private String passwd;
     private MyDatabaseHelper dbHelper;
 
     @Override
@@ -35,7 +35,7 @@ public class LoginActivity extends BaseActivity {
         us_id = user_id.getText().toString();
         passwd = password.getText().toString();
 
-        dbHelper = new MyDatabaseHelper(this, "Cinema.db", null, 1);
+        dbHelper = new MyDatabaseHelper(this, "Cinema.db", null, 2);
         Button login = (Button) findViewById(R.id.login);
         login.setOnClickListener(new View.OnClickListener(){
             @Override

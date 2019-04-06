@@ -9,8 +9,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     public static final String CREATE_ACCOUNT = "create table Account ("
             + "a_id integer primary key autoincrement not null, "
             + "password text not null, "
-            + "email text not null, "
-            + "name text not null)";
+            + "email text not null )";
 
 
     public static final String CREATE_MOVIE = "create table Movie ("

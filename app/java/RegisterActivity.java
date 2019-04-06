@@ -1,12 +1,15 @@
 package com.example.administrator.movieonline;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.view.View.OnClickListener;
 
 import java.util.Random;
 
@@ -15,7 +18,14 @@ public class RegisterActivity extends BaseActivity {
     private EditText re_password2;
     private EditText user_id;
     private EditText validate;
+    private EditText email;
+
+    private String use_id;
+    private String re_password;
+    private String user_email;
     private String validate_code="";
+    private MyDatabaseHelper dbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,14 +34,32 @@ public class RegisterActivity extends BaseActivity {
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
-        re_password1= (EditText) findViewById(R.id.re_password1);
-        re_password2= (EditText) findViewById(R.id.re_password2);
-        user_id = (EditText) findViewById(R.id.re_user_id);
-        validate = (EditText) findViewById(R.id.validate);
-        Button send_validate = (Button) findViewById(R.id.send_validate);
-        Button complete = (Button) findViewById(R.id.complete_register);
+        dbHelper = new MyDatabaseHelper(this, "Cinema.db", null, 2);
 
-        send_validate.setOnClickListener(new View.OnClickListener(){
+        re_password1 = (EditText) findViewById(R.id.re_password1);
+        re_password2 = (EditText) findViewById(R.id.re_password2);
+        re_password = re_password1.getText().toString();
+
+        user_id = (EditText) findViewById(R.id.re_user_id);
+        use_id = user_id.getText().toString();
+
+        validate = (EditText) findViewById(R.id.validate);
+
+        Button complete = (Button) findViewById(R.id.complete_register);
+        complete.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SQLiteDatabase db = dbHelper.getWritableDatabase();
+                ContentValues values = new ContentValues();
+                values.put("password", re_password);
+                values.put("email", use_id);
+                db.insert("Account", null, values);
+                values.clear();
+            }
+        });
+
+        Button send_validate = (Button) findViewById(R.id.send_validate);
+        send_validate.setOnClickListener(new OnClickListener(){
             @Override
             public void onClick(View v){
                 //generate validate code
@@ -46,7 +74,7 @@ public class RegisterActivity extends BaseActivity {
             }
         });
 
-        complete.setOnClickListener(new View.OnClickListener(){
+        complete.setOnClickListener(new OnClickListener(){
             @Override
             public void onClick(View v){
                 build_account();
